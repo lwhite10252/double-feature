@@ -1,4 +1,5 @@
 import './styles/App.css';
+import HeroBanner from './components/common/HeroBanner';
 import Nav from './components/common/Nav';
 import Trending from './pages/Trending';
 import { getTrendingMovies, searchMovies } from './services/api';
@@ -52,6 +53,7 @@ function App() {
   return (
     <MovieProvider>
             <Nav handleClearSearch={handleClearSearch} />
+            <HeroBanner />
       <main className="main-content">
         <Routes>
                     <Route
