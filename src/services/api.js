@@ -1,5 +1,5 @@
-const API_KEY = "";
-const BASE_URL = "https://api.themoviedb.org/3";
+const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
+const BASE_URL = 'https://api.themoviedb.org/3';
 
 // Fetch trending films
 export const getTrendingMovies = async (page = 1) => {
@@ -44,9 +44,9 @@ export const getSimilarMovies = async (id, page = 1) => {
 // Fetch similar films more specifically by genre (inclusive of first two listed)
 // Tighter search used for Watch With page
 export const getMoviesByGenre = async (genreIds, page = 1) => {
-  const response = await fetch(
+    const response = await fetch(
         `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genreIds.join(',')}&sort_by=popularity.desc&vote_count.gte=100&vote_average.gte=6&page=${page}`
-  );
+    );
 
     if (! response.ok) throw new Error('Failed to fetch similar movies');
 
