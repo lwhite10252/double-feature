@@ -1,10 +1,12 @@
 import './styles/App.css';
 import Favourites from './pages/Favourites';
 import HeroBanner from './components/common/HeroBanner';
+import MovieDetails from './pages/MovieDetails';
 import Nav from './components/common/Nav';
 import Trending from './pages/Trending';
 import Watchlist from './pages/Watchlist';
 import { getTrendingMovies, searchMovies } from './services/api';
+import { MovieProvider } from './contexts/MovieContext';
 import { Route, Routes } from 'react-router-dom';
 import { useCallback, useEffect, useState } from 'react';
 import { useDebounce } from './hooks/useDebounce';
@@ -76,6 +78,7 @@ function App() {
                             />
                         }
                     />
+                    <Route path="/movie/:id" element={<MovieDetails />} />
                     <Route path="/favourites" element={<Favourites />} />
                     <Route path="/watchlist" element={<Watchlist />} />
         </Routes>
