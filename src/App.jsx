@@ -1,7 +1,9 @@
 import './styles/App.css';
+import Favourites from './pages/Favourites';
 import HeroBanner from './components/common/HeroBanner';
 import Nav from './components/common/Nav';
 import Trending from './pages/Trending';
+import Watchlist from './pages/Watchlist';
 import { getTrendingMovies, searchMovies } from './services/api';
 import { Route, Routes } from 'react-router-dom';
 import { useCallback, useEffect, useState } from 'react';
@@ -74,6 +76,8 @@ function App() {
                             />
                         }
                     />
+                    <Route path="/favourites" element={<Favourites />} />
+                    <Route path="/watchlist" element={<Watchlist />} />
         </Routes>
       </main>
     </MovieProvider>
