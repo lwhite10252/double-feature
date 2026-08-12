@@ -4,6 +4,7 @@ import Trending from './pages/Trending';
 import { getTrendingMovies, searchMovies } from './services/api';
 import { Route, Routes } from 'react-router-dom';
 import { useCallback, useEffect, useState } from 'react';
+import { useDebounce } from './hooks/useDebounce';
 
 function App() {
     const [searchQuery, setSearchQuery] = useState('');
@@ -12,6 +13,14 @@ function App() {
     const [error, setError] = useState(null);
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
+    const debouncedSearchQuery = useDebounce(searchQuery, 500);
+    const isSearching = debouncedSearchQuery.trim() !== '';
+
+    // When search term changes, jump back to page 1
+    useEffect(() => {
+        setPage(1);
+    }, [debouncedSearchQuery]);
+
     const loadTrendingMovies = useCallback(async () => {
         setLoading(true);
         setError(null);
