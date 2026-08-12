@@ -1,9 +1,4 @@
-import "./css/App.css";
-import Favorites from "./pages/Favorites";
-import Home from "./pages/Home";
-import { Routes, Route } from "react-router-dom";
-import { MovieProvider } from "./contexts/MovieContext";
-import NavBar from "./components/NavBar";
+import Nav from './components/common/Nav';
 
 function App() {
   return (
