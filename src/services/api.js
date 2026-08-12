@@ -32,11 +32,23 @@ export const getMovieVideos = async (id) => {
     
     return response.json();
 };
+
+// Fetch similar films
+export const getSimilarMovies = async (id, page = 1) => {
+    const response = await fetch(`${BASE_URL}/movie/${id}/similar?api_key=${API_KEY}&page=${page}`);
+    if (! response.ok) throw new Error('Failed to fetch similar movies');
+
+    return response.json();
+};
+
+// Fetch similar films more specifically by genre (inclusive of first two listed)
+// Tighter search used for Watch With page
+export const getMoviesByGenre = async (genreIds, page = 1) => {
   const response = await fetch(
-    `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(
-      query
-    )}`
+        `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genreIds.join(',')}&sort_by=popularity.desc&vote_count.gte=100&vote_average.gte=6&page=${page}`
   );
-  const data = await response.json();
-  return data.results;
+
+    if (! response.ok) throw new Error('Failed to fetch similar movies');
+
+    return response.json();
 };

@@ -5,6 +5,7 @@ import MovieDetails from './pages/MovieDetails';
 import Nav from './components/common/Nav';
 import Trending from './pages/Trending';
 import Watchlist from './pages/Watchlist';
+import WatchWith from './pages/WatchWith';
 import { getTrendingMovies, searchMovies } from './services/api';
 import { MovieProvider } from './contexts/MovieContext';
 import { Route, Routes } from 'react-router-dom';
@@ -54,12 +55,12 @@ function App() {
         setPage(1);
     };
 
-  return (
-    <MovieProvider>
+    return (
+        <MovieProvider>
             <Nav handleClearSearch={handleClearSearch} />
             <HeroBanner />
-      <main className="main-content">
-        <Routes>
+            <main className="main-content">
+                <Routes>
                     <Route
                         path="/"
                         element={
@@ -79,12 +80,13 @@ function App() {
                         }
                     />
                     <Route path="/movie/:id" element={<MovieDetails />} />
+                    <Route path="/watch-with/:id" element={<WatchWith />} />
                     <Route path="/favourites" element={<Favourites />} />
                     <Route path="/watchlist" element={<Watchlist />} />
-        </Routes>
-      </main>
-    </MovieProvider>
-  );
+                </Routes>
+            </main>
+        </MovieProvider>
+    );
 }
 
 export default App;
