@@ -1,16 +1,17 @@
-# React + Vite
+# DoubleFeature
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a basic movie-finding app using TMDB's API. It connects to TMDB endpoints that grab 20 current trending films, but also allows the user to search for any film. Clicking a film will take you to a page with that movie's details and trailer; all movies can be added to a Watchlist or your Favourites, and all movies have a "Watch With..." button - the gimmick of this app. Clicking it hits TMDB's "similar movies" endpoint to grab a highly-rated film within the same genre(s) of your selected movie, thereby pairing it with a recommendation for a movie night!
 
-Currently, two official plugins are available:
+# Technical Info
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project has been forked from the [Learn React In One Project](https://github.com/techwithtim/Learn-React-In-One-Project) tutorial. 
+That template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## React Compiler
+The  following features have been added:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Pagination to the main/Trending page and the ability to click forward and back
+- Debounce on search input - we only fetch results once a user has paused typing
+- Logo designed by myself
+- Hero banner designed by myself, inspired by TMDB using Getty stock image
+- Updated nav bar and general UI tweaks
+- "Similar movie" generator functionality
